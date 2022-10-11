@@ -34,7 +34,10 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
     ),
   ];
+
   MyHomePage({super.key});
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,7 @@ class MyHomePage extends StatelessWidget {
         title: const Text("Home Page"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -56,6 +59,29 @@ class MyHomePage extends StatelessWidget {
                 "Card",
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Card(
+            elevation: 10,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextField(
+                    decoration: const InputDecoration(labelText: "Title"),
+                    controller: titleController,
+                  ),
+                  TextField(
+                    decoration: const InputDecoration(labelText: "Amount"),
+                    controller: amountController,
+                  ),
+                  OutlinedButton(
+                    child: const Text("Add Transaction"),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ),
           ),
@@ -74,7 +100,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Rs. ' + tx.amount.toString(),
+                        '₹ ${tx.amount}',
                         style:
                             const TextStyle(color: Colors.purple, fontSize: 18),
                       ),
